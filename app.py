@@ -12,26 +12,26 @@ import base64
 
 
 # Function to export the data
-def download_link(object_to_download, download_filename, download_link_text):
-    """
-    Generates a link to download the given object_to_download.
+# def download_link(object_to_download, download_filename, download_link_text):
+#     """
+#     Generates a link to download the given object_to_download.
 
-    object_to_download (str, pd.DataFrame):  The object to be downloaded.
-    download_filename (str): filename and extension of file. e.g. mydata.csv, some_txt_output.txt
-    download_link_text (str): Text to display for download link.
+#     object_to_download (str, pd.DataFrame):  The object to be downloaded.
+#     download_filename (str): filename and extension of file. e.g. mydata.csv, some_txt_output.txt
+#     download_link_text (str): Text to display for download link.
 
-    Examples:
-    download_link(YOUR_DF, 'YOUR_DF.csv', 'Click here to download data!')
-    download_link(YOUR_STRING, 'YOUR_STRING.txt', 'Click here to download your text!')
+#     Examples:
+#     download_link(YOUR_DF, 'YOUR_DF.csv', 'Click here to download data!')
+#     download_link(YOUR_STRING, 'YOUR_STRING.txt', 'Click here to download your text!')
 
-    """
-    if isinstance(object_to_download,pd.DataFrame):
-        object_to_download = object_to_download.to_csv(index=True)
+#     """
+#     if isinstance(object_to_download,pd.DataFrame):
+#         object_to_download = object_to_download.to_csv(index=True)
 
-    # some strings <-> bytes conversions necessary here
-    b64 = base64.b64encode(object_to_download.encode()).decode()
+#     # some strings <-> bytes conversions necessary here
+#     b64 = base64.b64encode(object_to_download.encode()).decode()
 
-    return f'<a href="data:file/csv;base64,{b64}" download="{download_filename}">{download_link_text}</a>'
+#     return f'<a href="data:file/csv;base64,{b64}" download="{download_filename}">{download_link_text}</a>'
 
 
 
@@ -82,21 +82,21 @@ def main():
         if sort == 'Ascending order':
             df_fruit_sort = df_fruit.sort_values(by = 'Item Sort Order')
             st.dataframe(df_fruit_sort)
-            if st.button('Download Dataframe as CSV'):
-                tmp_download_link = download_link(df_fruit_sort, 'fruit_data.csv', 'Click here to download your data!')
-                st.markdown(tmp_download_link, unsafe_allow_html=True)
+#             if st.button('Download Dataframe as CSV'):
+#                 tmp_download_link = download_link(df_fruit_sort, 'fruit_data.csv', 'Click here to download your data!')
+#                 st.markdown(tmp_download_link, unsafe_allow_html=True)
     
         elif sort == 'Descending order':
             df_fruit_sort = df_fruit.sort_values(by = 'Item Sort Order', ascending = False)
             st.dataframe(df_fruit_sort)
-            if st.button('Download Dataframe as CSV'):
-                tmp_download_link = download_link(df_fruit_sort, 'fruit_data.csv', 'Click here to download your data!')
-                st.markdown(tmp_download_link, unsafe_allow_html=True)
+#             if st.button('Download Dataframe as CSV'):
+#                 tmp_download_link = download_link(df_fruit_sort, 'fruit_data.csv', 'Click here to download your data!')
+#                 st.markdown(tmp_download_link, unsafe_allow_html=True)
         else:
             st.dataframe(df_fruit)
-            if st.button('Download Dataframe as CSV'):
-                tmp_download_link = download_link(df_fruit, 'fruit_data.csv', 'Click here to download your data!')
-                st.markdown(tmp_download_link, unsafe_allow_html=True)
+#             if st.button('Download Dataframe as CSV'):
+#                 tmp_download_link = download_link(df_fruit, 'fruit_data.csv', 'Click here to download your data!')
+#                 st.markdown(tmp_download_link, unsafe_allow_html=True)
         
     
     elif rad == 'Vegetable':
@@ -120,21 +120,21 @@ def main():
         if sort == 'Ascending order':
             df_veg_sort = df_veg.sort_values(by = 'Item Sort Order')
             st.dataframe(df_veg_sort)
-            if st.button('Download Dataframe as CSV'):
-                tmp_download_link = download_link(df_veg_sort, 'veg_data.csv', 'Click here to download your data!')
-                st.markdown(tmp_download_link, unsafe_allow_html=True)
+#             if st.button('Download Dataframe as CSV'):
+#                 tmp_download_link = download_link(df_veg_sort, 'veg_data.csv', 'Click here to download your data!')
+#                 st.markdown(tmp_download_link, unsafe_allow_html=True)
     
         elif sort == 'Descending order':
             df_veg_sort = df_veg.sort_values(by = 'Item Sort Order', ascending = False)
             st.dataframe(df_veg_sort)
-            if st.button('Download Dataframe as CSV'):
-                tmp_download_link = download_link(df_veg_sort, 'veg_data.csv', 'Click here to download your data!')
-                st.markdown(tmp_download_link, unsafe_allow_html=True)
+#             if st.button('Download Dataframe as CSV'):
+#                 tmp_download_link = download_link(df_veg_sort, 'veg_data.csv', 'Click here to download your data!')
+#                 st.markdown(tmp_download_link, unsafe_allow_html=True)
         else:
             st.dataframe(df_veg)
-            if st.button('Download Dataframe as CSV'):
-                tmp_download_link = download_link(df_veg, 'veg_data.csv', 'Click here to download your data!')
-                st.markdown(tmp_download_link, unsafe_allow_html=True)
+#             if st.button('Download Dataframe as CSV'):
+#                 tmp_download_link = download_link(df_veg, 'veg_data.csv', 'Click here to download your data!')
+#                 st.markdown(tmp_download_link, unsafe_allow_html=True)
     else:
         all_data = data.groupby(['Item','Month'])['Sales'].sum().reset_index()
         all_data1 = all_data.pivot_table(index = 'Item', columns = 'Month', values= 'Sales')
@@ -155,21 +155,21 @@ def main():
         if sort == 'Ascending order':
             df_all_sort = df_all.sort_values(by = 'Item Sort Order')
             st.dataframe(df_all_sort)
-            if st.button('Download Dataframe as CSV'):
-                tmp_download_link = download_link(df_all_sort, 'all_data.csv', 'Click here to download your data!')
-                st.markdown(tmp_download_link, unsafe_allow_html=True)
+#             if st.button('Download Dataframe as CSV'):
+#                 tmp_download_link = download_link(df_all_sort, 'all_data.csv', 'Click here to download your data!')
+#                 st.markdown(tmp_download_link, unsafe_allow_html=True)
     
         elif sort == 'Descending order':
             df_all_sort = df_all.sort_values(by = 'Item Sort Order', ascending = False)
             st.dataframe(df_all_sort)
-            if st.button('Download Dataframe as CSV'):
-                tmp_download_link = download_link(df_all_sort, 'all_data.csv', 'Click here to download your data!')
-                st.markdown(tmp_download_link, unsafe_allow_html=True)
+#             if st.button('Download Dataframe as CSV'):
+#                 tmp_download_link = download_link(df_all_sort, 'all_data.csv', 'Click here to download your data!')
+#                 st.markdown(tmp_download_link, unsafe_allow_html=True)
         else:
             st.dataframe(df_all)
-            if st.button('Download Dataframe as CSV'):
-                tmp_download_link = download_link(df_all, 'all_data.csv', 'Click here to download your data!')
-                st.markdown(tmp_download_link, unsafe_allow_html=True)
+#             if st.button('Download Dataframe as CSV'):
+#                 tmp_download_link = download_link(df_all, 'all_data.csv', 'Click here to download your data!')
+#                 st.markdown(tmp_download_link, unsafe_allow_html=True)
     
 #if st.button('Download Dataframe as CSV'):
     #tmp_download_link = download_link(data, 'YOUR_DF.csv', 'Click here to download your data!')
